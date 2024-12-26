@@ -5,17 +5,13 @@ import { getAllPhotoEntriesPreviews } from "@/sanity/queries/entries";
 export default async function Home() {
   const photoEntries: any[] = await getAllPhotoEntriesPreviews();
 
-  console.log(photoEntries);
-
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <ol>
           {photoEntries.map(({ title, slug }) => (
-            <li key={slug}>
+            <li key={slug?.current}>
               <a
-                target="_blank"
-                rel="noopener noreferrer"
                 href={`/entries/${slug?.current}`}
               >
                 View {title}

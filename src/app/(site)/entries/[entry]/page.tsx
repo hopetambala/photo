@@ -57,7 +57,7 @@ export default async function PhotoEntry({ params }: Params) {
         <a href={"/"}>
           <h2>{title}</h2>
         </a>
-        <OCResponsiveImage src={mainImage?.image} alt={title} />
+        <OCResponsiveImage src={mainImage?.image} priority alt={title} />
       </article>
       <aside></aside>
     </main>

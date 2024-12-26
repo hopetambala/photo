@@ -1,7 +1,7 @@
 export const metadata = {
   metadataBase: new URL("https://cooking-puce.vercel.app/studio"),
   title: "Sanity CMS",
-  description: "Content management system for cooking.puente-dr.org",
+  description: "Content management system for photo.hope.com",
 };
 
 export default function RootLayout({
