@@ -42,8 +42,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export default async function PhotoEntry({ params }: Params) {
-  const slug = params.entry;
-  const photoEntry: any = await getPhotoEntry(slug);
+  const photoEntry: any = await getPhotoEntry(params.entry);
 
   const { title, mainImage } = photoEntry;
 
@@ -55,11 +54,12 @@ export default async function PhotoEntry({ params }: Params) {
   return (
     <main>
       <article>
-        <h2>{title}</h2>
+        <a href={"/"}>
+          <h2>{title}</h2>
+        </a>
         <OCResponsiveImage src={mainImage?.image} alt={title} />
       </article>
-      <aside>
-      </aside>
+      <aside></aside>
     </main>
   );
 }
