@@ -1,68 +1,51 @@
-// import { getAllRecipePreviews, getSingleRecipeDetails } from "@/sanity/sanity.query";
+import { getPhotoEntry } from "@/sanity/queries/entries";
 import { PortableText } from "@portabletext/react";
 // import type { RecipeType } from "@/types/sanity.custom-types";
 import type { Metadata } from "next";
 // import { generateRandomFallbackImage } from "@/utils/testing-helpers";
 // import { AdBanner, AdSlot } from "@/overcooked-design-system/ad-components";
 import styles from "./page.module.css";
+import Image from "next/image";
+import { OCResponsiveImage } from "@/app/overcooked-design-system/components";
 // import OcImageComponent from "@/overcooked-design-system/ui-components/image/OcImageComponent";
 // import { OCButton } from "@/overcooked-design-system/ui-components";
 // import { imgDim } from "@/utils/general";
 // import { FavoriteCard } from "@/overcooked-design-system/cooking-components";
 
+export const imgDim = (scale = 1, height = 1140, width = 760) => {
+  return {
+    height: height * scale,
+    width: width * scale,
+  };
+};
+
 type Params = {
   params: {
-    recipe: string;
+    entry: string;
   };
 };
 
 // Dynamic metadata for SEO
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  // const recipe: RecipeType = await getSingleRecipeDetails(params.recipe);
-  // const {
-  //   textTitleForRecipeName: title,
-  //   textForRecipeTagline: description,
-  //   imageForLandingRecipe: image,
-  // } = recipe;
+  const entry: any = await getPhotoEntry(params.entry);
+  const { title, mainImage } = entry;
 
-  // return {
-  //   title: `${title} | Recipe`,
-  //   description,
-  //   openGraph: {
-  //     images: image?.image || generateRandomFallbackImage(),
-  //     title,
-  //     description,
-  //   },
-  // };
   return {
-    title: `Photo Entry title`,
-    description:"Photo Entry",
-    // openGraph: {
-    //   images: image?.image || generateRandomFallbackImage(),
-    //   title,
-    //   description,
-    // },
+    title,
+    description: "Photo Entry Description",
+    openGraph: {
+      images: mainImage?.image,
+      title,
+      description: "Photo Entry Open Graph Description",
+    },
   };
 }
 
 export default async function PhotoEntry({ params }: Params) {
-  // const slug = params.recipe;
-  // const recipes: RecipeType[] = await getAllRecipePreviews();
-  // const recipe: RecipeType = await getSingleRecipeDetails(slug);
-  // const {
-  //   textTitleForRecipeName,
-  //   textForRecipeTagline,
-  //   textForIntroduction,
-  //   imageForLandingRecipe,
-  //   imageForIngredients,
-  //   textForIngredients,
-  //   imageOfProcess,
-  //   textForProcess,
-  //   imageForFinishedProduct,
-  //   textFinishedProduct,
-  //   ingredients,
-  //   instructions,
-  // } = recipe;
+  const slug = params.entry;
+  const photoEntry: any = await getPhotoEntry(slug);
+
+  const { title, mainImage } = photoEntry;
 
   // const clxName = [
   //   styles["recipe-page__content"],
@@ -70,15 +53,13 @@ export default async function PhotoEntry({ params }: Params) {
   // ].join(" ");
 
   return (
-    <div>
-      <main>
-       <h1>Photo Entry</h1>
-      </main>
+    <main>
+      <article>
+        <h2>{title}</h2>
+        <OCResponsiveImage src={mainImage?.image} alt={title} />
+      </article>
       <aside>
-     
-          <h3>Meet the me</h3>
-         
       </aside>
-    </div>
+    </main>
   );
 }

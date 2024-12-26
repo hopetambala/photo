@@ -31,7 +31,7 @@ export async function getPhotoEntry(slug: string) {
       _id,
       slug,
       title,
-      mainImage
+      mainImage {alt, "image": asset->url},
     }`;
   const params = { slug };
   const next = {
