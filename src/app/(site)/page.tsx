@@ -1,26 +1,25 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { getAllPhotoEntriesPreviews } from "@/sanity/queries/entries";
 
-export default function Home() {
+export default async function Home() {
+  const photoEntries: any[] = await getAllPhotoEntriesPreviews();
+
+  console.log(photoEntries);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
         <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
+          {photoEntries.map(({ title, slug }) => (
+            <li key={slug}>
+             
+              <a href={`/entries/${slug?.current}`}>View {title}</a>
+            </li>
+          ))}
         </ol>
 
-        <div className={styles.ctas}>
+        {/* <div className={styles.ctas}>
           <a
             className={styles.primary}
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
@@ -44,7 +43,7 @@ export default function Home() {
           >
             Read our docs
           </a>
-        </div>
+        </div> */}
       </main>
       <footer className={styles.footer}>
         <a
