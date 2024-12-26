@@ -20,13 +20,14 @@ export const imgDim = (scale = 1, height = 1140, width = 760) => {
 };
 
 type Params = {
-  params: {
+  params: Promise<{
     entry: string;
-  };
+  }>;
 };
 
 // Dynamic metadata for SEO
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const entry: any = await getPhotoEntry(params.entry);
   const { title, mainImage } = entry;
 
@@ -41,7 +42,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function PhotoEntry({ params }: Params) {
+export default async function PhotoEntry(props: Params) {
+  const params = await props.params;
   const photoEntry: any = await getPhotoEntry(params.entry);
 
   const { title, mainImage } = photoEntry;
