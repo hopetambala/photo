@@ -20,13 +20,6 @@ export type PhotoEntry = {
   };
 };
 
-export const imgDim = (scale = 1, height = 1140, width = 760) => {
-  return {
-    height: height * scale,
-    width: width * scale,
-  };
-};
-
 // Dynamic metadata for SEO
 export async function generateMetadata(props: Params): Promise<Metadata> {
   const params = await props.params;
