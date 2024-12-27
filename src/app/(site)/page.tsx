@@ -5,13 +5,12 @@ import {
   OCMasonryGallery,
   OCResponsiveImage,
 } from "../overcooked-design-system/components";
+import { PhotoEntry } from "./entries/[entry]/page";
 
-const masonryHeights = [
-  300, 500, 500, 600, 
-];
+const masonryHeights = [300, 500, 500, 600];
 
 export default async function Home() {
-  const photoEntries: any[] = await getAllPhotoEntriesPreviews();
+  const photoEntries: PhotoEntry[] = await getAllPhotoEntriesPreviews();
 
   return (
     <div className={styles.page}>
@@ -32,7 +31,11 @@ export default async function Home() {
                   key={`${slug?.current}-${idx}`}
                   src={mainImage?.image}
                   alt={title}
-                  height={masonryHeights[Math.floor(Math.random()*masonryHeights.length)]}
+                  height={
+                    masonryHeights[
+                      Math.floor(Math.random() * masonryHeights.length)
+                    ]
+                  }
                 />
               );
             })}

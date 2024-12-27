@@ -11,7 +11,7 @@ interface OCResponsiveImageProps {
 const OCResponsiveImage = ({
   src,
   alt,
-  priority = false,
+  // priority = false,
   objectFit = "cover",
   height,
   ...props

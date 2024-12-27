@@ -32,7 +32,7 @@ const OCMasonryGallery = ({
     <Masonry
       columns={columnsValue}
       defaultHeight={defaultHeight}
-      defaultColumns={columnsValue}
+      defaultColumns={defaultColumns || columnsValue}
       defaultSpacing={2}
       spacing={0}
       {...props}
