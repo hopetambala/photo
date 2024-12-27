@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./OCResponsiveImage.module.css";
 
 interface OCResponsiveImageProps {
@@ -6,12 +5,15 @@ interface OCResponsiveImageProps {
   alt: string;
   priority?: boolean;
   objectFit?: "cover" | "contain";
+  height?: number;
+  width?: number;
 }
 const OCResponsiveImage = ({
   src,
   alt,
   priority = false,
   objectFit = "cover",
+  height,
   ...props
 }: OCResponsiveImageProps) => {
 
@@ -24,8 +26,8 @@ const OCResponsiveImage = ({
     styles[`responsive__image--object-fit--${objectFit}`],
   ].join(" ");
   return (
-    <div {...props} className={imageContainerClxNames}>
-      <Image className={imageClassNames} src={src} alt={alt} fill priority />
+    <div {...props} className={imageContainerClxNames} style={{height}}>
+      <img className={imageClassNames} src={src} alt={alt}  />
     </div>
   );
 };

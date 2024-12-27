@@ -3,20 +3,19 @@ import { PortableText } from "@portabletext/react";
 import type { Metadata } from "next";
 // import { generateRandomFallbackImage } from "@/utils/testing-helpers";
 import styles from "./page.module.css";
-import Image from "next/image";
 import { OCResponsiveImage } from "@/app/overcooked-design-system/components";
+
+type Params = {
+  params: Promise<{
+    entry: string;
+  }>;
+};
 
 export const imgDim = (scale = 1, height = 1140, width = 760) => {
   return {
     height: height * scale,
     width: width * scale,
   };
-};
-
-type Params = {
-  params: Promise<{
-    entry: string;
-  }>;
 };
 
 // Dynamic metadata for SEO
