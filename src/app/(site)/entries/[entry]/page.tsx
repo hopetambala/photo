@@ -41,7 +41,7 @@ export default async function PhotoEntry(props: Params) {
   const params = await props.params;
   const photoEntry: PhotoEntry = await getPhotoEntry(params.entry);
 
-  const { title, mainImage } = photoEntry;
+  const { title, slug, mainImage } = photoEntry;
 
   return (
     <main>
@@ -49,7 +49,13 @@ export default async function PhotoEntry(props: Params) {
         <a href={"/"}>
           <h2>{title}</h2>
         </a>
-        <OCResponsiveImage src={mainImage?.image} priority alt={title} />
+        <OCResponsiveImage
+          key={`${slug?.current}`}
+          src={mainImage?.image}
+          alt={title}
+          height={800}
+          objectFit="contain"
+        />
       </article>
       <aside></aside>
     </main>

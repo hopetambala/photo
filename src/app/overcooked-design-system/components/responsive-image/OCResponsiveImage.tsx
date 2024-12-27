@@ -7,7 +7,6 @@ interface OCResponsiveImageProps {
   priority?: boolean;
   objectFit?: "cover" | "contain";
   height?: number;
-  width?: number;
 }
 const OCResponsiveImage = ({
   src,
@@ -17,18 +16,23 @@ const OCResponsiveImage = ({
   height,
   ...props
 }: OCResponsiveImageProps) => {
-
-  const imageContainerClxNames =[
-    styles["responsive__image__container"], 
-  ].join(" ");
+  const imageContainerClxNames = [styles["responsive__image__container"]].join(
+    " ",
+  );
 
   const imageClassNames = [
     styles["responsive__image"],
     styles[`responsive__image--object-fit--${objectFit}`],
   ].join(" ");
   return (
-    <div {...props} className={imageContainerClxNames} style={{height}}>
-      <Image className={imageClassNames} src={src} alt={alt} fill/>
+    <div
+      {...props}
+      className={imageContainerClxNames}
+      style={{
+        height: height ? height : "",
+      }}
+    >
+      <Image className={imageClassNames} src={src} alt={alt} fill />
     </div>
   );
 };

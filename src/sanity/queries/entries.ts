@@ -1,5 +1,5 @@
 import { groq } from "next-sanity";
-import {client} from "../lib/client";
+import { client } from "../lib/client";
 
 /**
  * Retrieves all recipe previews from the Sanity database.
