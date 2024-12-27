@@ -1,6 +1,10 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { getAllPhotoEntriesPreviews } from "@/sanity/queries/entries";
+import {
+  OCMasonryGallery,
+  OCResponsiveImage,
+} from "../overcooked-design-system/components";
 
 export default async function Home() {
   const photoEntries: any[] = await getAllPhotoEntriesPreviews();
@@ -15,6 +19,20 @@ export default async function Home() {
             </li>
           ))}
         </ol>
+        <div style={{ width: "800px" }}>
+          <OCMasonryGallery>
+            {photoEntries.map((photo, idx) => {
+              const { mainImage, slug, title } = photo;
+              return (
+                <OCResponsiveImage
+                  key={`${slug?.current}-${idx}`}
+                  src={mainImage?.image}
+                  alt={title}
+                />
+              );
+            })}
+          </OCMasonryGallery>
+        </div>
       </main>
       <footer className={styles.footer}>
         <a

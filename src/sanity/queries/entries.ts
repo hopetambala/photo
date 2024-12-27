@@ -9,7 +9,8 @@ export async function getAllPhotoEntriesPreviews() {
   const query = groq`*[_type == "post"] | order(publishedAt desc) {
       _id,
       slug,
-      title
+      title,
+      mainImage {alt, "image": asset->url}
     }`;
   const params = {};
   const next = {
