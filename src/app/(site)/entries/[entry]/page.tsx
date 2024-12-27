@@ -47,7 +47,7 @@ export default async function PhotoEntry(props: Params) {
     <main>
       <article>
         <a href={"/"}>
-          <h2>{title}</h2>
+          <h2>{title ?? ''}</h2>
         </a>
         <OCResponsiveImage
           key={`${slug?.current}`}
