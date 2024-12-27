@@ -33,6 +33,11 @@ export async function getPhotoEntry(slug: string) {
       slug,
       title,
       mainImage {alt, "image": asset->url},
+      gallery {
+        images[] {
+          "image": asset->url
+        }
+      }
     }`;
   const params = { slug };
   const next = {

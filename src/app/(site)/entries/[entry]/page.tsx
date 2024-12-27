@@ -2,7 +2,12 @@ import { getPhotoEntry } from "@/sanity/queries/entries";
 // import { PortableText } from "@portabletext/react";
 import type { Metadata } from "next";
 // import { generateRandomFallbackImage } from "@/utils/testing-helpers";
-import { OCResponsiveImage } from "@/app/overcooked-design-system/components";
+import {
+  OCMasonryGallery,
+  OCResponsiveImage,
+} from "@/app/overcooked-design-system/components";
+
+const masonryHeights = [300, 500, 500, 600];
 
 type Params = {
   params: Promise<{
@@ -17,6 +22,11 @@ export type PhotoEntry = {
   };
   mainImage: {
     image: string;
+  };
+  gallery: {
+    images: {
+      image: string;
+    }[];
   };
 };
 
@@ -40,14 +50,13 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
 export default async function PhotoEntry(props: Params) {
   const params = await props.params;
   const photoEntry: PhotoEntry = await getPhotoEntry(params.entry);
-
-  const { title, slug, mainImage } = photoEntry;
+  const { title, slug, mainImage, gallery } = photoEntry;
 
   return (
     <main>
       <article>
         <a href={"/"}>
-          <h2>{title ?? ''}</h2>
+          <h2>{title ?? ""}</h2>
         </a>
         <OCResponsiveImage
           key={`${slug?.current}`}
@@ -56,6 +65,26 @@ export default async function PhotoEntry(props: Params) {
           height={800}
           objectFit="contain"
         />
+
+        <div style={{ width: "800px", margin: "0 auto" }}>
+          <OCMasonryGallery>
+            {gallery?.images.map((photo, idx) => {
+              const { image } = photo;
+              return (
+                <OCResponsiveImage
+                  key={`${slug?.current}-${idx}`}
+                  src={image}
+                  alt={title}
+                  height={
+                    masonryHeights[
+                      Math.floor(Math.random() * masonryHeights.length)
+                    ]
+                  }
+                />
+              );
+            })}
+          </OCMasonryGallery>
+        </div>
       </article>
       <aside></aside>
     </main>
