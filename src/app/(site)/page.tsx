@@ -15,28 +15,24 @@ export default async function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <ol>
-          {photoEntries.map(({ title, slug }) => (
-            <li key={slug?.current}>
-              <a href={`/entries/${slug?.current}`}>View {title}</a>
-            </li>
-          ))}
-        </ol>
         <div style={{ width: "800px" }}>
           <OCMasonryGallery>
             {photoEntries.map((photo, idx) => {
               const { mainImage, slug, title } = photo;
               return (
-                <OCResponsiveImage
-                  key={`${slug?.current}-${idx}`}
-                  src={mainImage?.image}
-                  alt={title}
-                  height={
-                    masonryHeights[
-                      Math.floor(Math.random() * masonryHeights.length)
-                    ]
-                  }
-                />
+                <a href={`/entries/${slug?.current}`} key={slug?.current}>
+                  <OCResponsiveImage
+                    key={`${slug?.current}-${idx}`}
+                    src={mainImage?.image}
+                    alt={title}
+                    text={title}
+                    height={
+                      masonryHeights[
+                        Math.floor(Math.random() * masonryHeights.length)
+                      ]
+                    }
+                  />
+                </a>
               );
             })}
           </OCMasonryGallery>

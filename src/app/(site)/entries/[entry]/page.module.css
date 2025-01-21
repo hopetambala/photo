@@ -1,0 +1,7 @@
+.page a {
+  text-align: center;
+  color: #e5e5e5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  font-size: calc(48px * 1.5);
+}

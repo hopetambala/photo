@@ -2,6 +2,22 @@
   position: relative;
 }
 
+.responsive__image__container__text {
+  text-align: center;
+  color: #e5e5e5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 48px;
+}
+
+.responsive__image__container__text--centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .responsive__image {
   position: absolute;
   top: 0;
