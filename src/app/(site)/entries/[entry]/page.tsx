@@ -7,7 +7,7 @@ import {
   OCResponsiveImage,
 } from "@/app/overcooked-design-system/components";
 
-import styles from "./page.module.css"; 
+import styles from "./page.module.css";
 
 const masonryHeights = [300, 500, 500, 600];
 
