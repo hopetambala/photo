@@ -66,15 +66,16 @@ export default async function PhotoEntry(props: Params) {
           </div>
           <div className={styles.page__header__container__element}></div>
         </div>
-
         <div style={{ width: "80vw", margin: "0 auto" }}>
           <OCResponsiveImage
             key={`${slug?.current}`}
             src={mainImage?.image}
             alt={title}
-            height={800}
+            height={1000}
             objectFit="cover"
           />
+        </div>
+        <div style={{ width: "80vw", margin: "0 auto" }}>
           <OCMasonryGallery columns={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 4 }}>
             {gallery?.images.map((photo, idx) => {
               const { image } = photo;
@@ -97,7 +98,6 @@ export default async function PhotoEntry(props: Params) {
                       src={image}
                       alt={title}
                       objectFit="contain"
-                      height={800}
                     />
                   </div>
                 </button>

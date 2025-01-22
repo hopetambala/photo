@@ -7,9 +7,10 @@ interface OCResponsiveImageProps {
   alt: string;
   priority?: boolean;
   objectFit?: "cover" | "contain";
-  height?: number;
+  height?: number | string;
   text?: string;
   popoverTarget?: HTMLAttributes<HTMLDivElement>["popoverTarget"];
+  customImageContainerClassNames?: string;
 }
 const OCResponsiveImage = ({
   src,
@@ -19,11 +20,13 @@ const OCResponsiveImage = ({
   height,
   text,
   popoverTarget,
+  customImageContainerClassNames,
   ...props
 }: OCResponsiveImageProps) => {
   const imageContainerClxNames = [
     styles["responsive__image__container"],
     styles["responsive__image__container__text"],
+    customImageContainerClassNames,
   ].join(" ");
 
   const imageClassNames = [
@@ -40,7 +43,7 @@ const OCResponsiveImage = ({
       popoverTarget={popoverTarget}
       className={imageContainerClxNames}
       style={{
-        height: height ? height : "",
+        height: height ? height : "100vh",
       }}
     >
       <Image className={imageClassNames} src={src} alt={alt} fill />
