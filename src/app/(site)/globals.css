@@ -35,8 +35,30 @@ a {
   text-decoration: none;
 }
 
+button {
+  border:none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+[popover] {
+  width: 100%;
+  margin: auto;
+  padding: 5rem;
+  border: none;
+}
+
+/*   IS-OPEN STATE   */
+[popover]:popover-open {
+  translate: 0 0;
+}
+
+/*   EXIT STATE   */
+[popover] {
+  transition: translate 0.2s ease-out, display 0.2s ease-out allow-discrete, overlay 0.2s ease-out allow-discrete;
+  translate: 0 0;
 }

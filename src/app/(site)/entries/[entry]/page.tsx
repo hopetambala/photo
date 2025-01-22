@@ -72,21 +72,34 @@ export default async function PhotoEntry(props: Params) {
           <OCMasonryGallery>
             {gallery?.images.map((photo, idx) => {
               const { image } = photo;
+              const key = `${slug?.current}-${idx}`;
               return (
-                <OCResponsiveImage
-                  key={`${slug?.current}-${idx}`}
-                  src={image}
-                  alt={title}
-                  height={
-                    masonryHeights[
-                      Math.floor(Math.random() * masonryHeights.length)
-                    ]
-                  }
-                />
+                <button key={key} popoverTarget={key}>
+                  <OCResponsiveImage
+                    key={key}
+                    src={image}
+                    alt={title}
+                    height={
+                      masonryHeights[
+                        Math.floor(Math.random() * masonryHeights.length)
+                      ]
+                    }
+                  />
+                  <div id={key} popover="auto">
+                    <OCResponsiveImage
+                      key={key}
+                      src={image}
+                      alt={title}
+                      objectFit="contain"
+                      height={800}
+                    />
+                  </div>
+                </button>
               );
             })}
           </OCMasonryGallery>
         </div>
+       
       </article>
       <aside></aside>
     </main>

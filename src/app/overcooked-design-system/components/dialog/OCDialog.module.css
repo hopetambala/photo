@@ -1,0 +1,7 @@
+.oc-dialog {
+  position: relative;
+}
+
+.oc-dialog::backdrop {
+  background-color: blue;
+}

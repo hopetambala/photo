@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./OCResponsiveImage.module.css";
+import React, { HTMLAttributes } from "react";
 
 interface OCResponsiveImageProps {
   src: string;
@@ -8,6 +9,7 @@ interface OCResponsiveImageProps {
   objectFit?: "cover" | "contain";
   height?: number;
   text?: string;
+  popoverTarget?: HTMLAttributes<HTMLDivElement>["popoverTarget"];
 }
 const OCResponsiveImage = ({
   src,
@@ -16,6 +18,7 @@ const OCResponsiveImage = ({
   objectFit = "cover",
   height,
   text,
+  popoverTarget,
   ...props
 }: OCResponsiveImageProps) => {
   const imageContainerClxNames = [
@@ -34,6 +37,7 @@ const OCResponsiveImage = ({
   return (
     <div
       {...props}
+      popoverTarget={popoverTarget}
       className={imageContainerClxNames}
       style={{
         height: height ? height : "",
