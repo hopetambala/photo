@@ -36,7 +36,7 @@ a {
 }
 
 button {
-  border:none;
+  border: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,6 +59,9 @@ button {
 
 /*   EXIT STATE   */
 [popover] {
-  transition: translate 0.2s ease-out, display 0.2s ease-out allow-discrete, overlay 0.2s ease-out allow-discrete;
+  transition:
+    translate 0.2s ease-out,
+    display 0.2s ease-out allow-discrete,
+    overlay 0.2s ease-out allow-discrete;
   translate: 0 0;
 }

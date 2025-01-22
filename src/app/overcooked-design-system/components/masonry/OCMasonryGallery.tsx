@@ -27,12 +27,11 @@ const OCMasonryGallery = ({
   if (!isMounted) {
     return <div>Loading</div>;
   }
-  const columnsValue = parseInt(columns as string);
   return (
     <Masonry
-      columns={columnsValue}
+      columns={columns}
       defaultHeight={defaultHeight}
-      defaultColumns={defaultColumns || columnsValue}
+      defaultColumns={defaultColumns}
       defaultSpacing={2}
       spacing={0}
       {...props}

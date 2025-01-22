@@ -15,8 +15,8 @@ export default async function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <div style={{ width: "800px" }}>
-          <OCMasonryGallery>
+        <div style={{ width: "80vw", margin: "0 auto" }}>
+          <OCMasonryGallery columns={{ xs: 1, sm: 1, md: 2 }}>
             {photoEntries.map((photo, idx) => {
               const { mainImage, slug, title } = photo;
               return (

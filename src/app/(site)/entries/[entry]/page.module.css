@@ -1,7 +1,36 @@
-.page a {
+.page h2 {
   text-align: center;
   color: #e5e5e5;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   text-transform: uppercase;
-  font-size: calc(48px * 1.5);
+  font-size: calc(7vw);
+}
+
+.page a {
+  text-align: center;
+  color: #e5e5e5;
+  font-size: calc(2vw);
+}
+
+.page__header__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 80vw;
+}
+
+.page__header__container__element {
+  flex: 1;
+  display: flex;
+}
+
+.page__header__container__element:first-child > div {
+  margin-right: auto;
+}
+
+.page__header__container__element:last-child > div {
+  margin-left: auto;
 }

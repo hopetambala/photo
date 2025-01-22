@@ -57,19 +57,25 @@ export default async function PhotoEntry(props: Params) {
   return (
     <main className={styles.page}>
       <article>
-        <a href={"/"}>
-          <h2>{title ?? ""}</h2>
-        </a>
-        <OCResponsiveImage
-          key={`${slug?.current}`}
-          src={mainImage?.image}
-          alt={title}
-          height={800}
-          objectFit="contain"
-        />
+        <div className={styles.page__header__container}>
+          <div className={styles.page__header__container__element}>
+            <a href={"/"}>↖️ head back</a>
+          </div>
+          <div className={styles.page__header__container__element}>
+            <h2>{title ?? ""}</h2>
+          </div>
+          <div className={styles.page__header__container__element}></div>
+        </div>
 
-        <div style={{ width: "800px", margin: "0 auto" }}>
-          <OCMasonryGallery>
+        <div style={{ width: "80vw", margin: "0 auto" }}>
+          <OCResponsiveImage
+            key={`${slug?.current}`}
+            src={mainImage?.image}
+            alt={title}
+            height={800}
+            objectFit="cover"
+          />
+          <OCMasonryGallery columns={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 4 }}>
             {gallery?.images.map((photo, idx) => {
               const { image } = photo;
               const key = `${slug?.current}-${idx}`;
@@ -99,7 +105,6 @@ export default async function PhotoEntry(props: Params) {
             })}
           </OCMasonryGallery>
         </div>
-       
       </article>
       <aside></aside>
     </main>
