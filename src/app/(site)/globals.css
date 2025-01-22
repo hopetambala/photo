@@ -48,8 +48,13 @@ button {
 [popover] {
   width: 100%;
   margin: auto;
-  padding: 5rem 0;
+  background-color: transparent;
+  padding: 5rem;
   border: none;
+}
+
+[popover]::backdrop {
+  background-color: rgba(0, 0, 0, 0.722);
 }
 
 /*   IS-OPEN STATE   */
@@ -64,4 +69,10 @@ button {
     display 0.2s ease-out allow-discrete,
     overlay 0.2s ease-out allow-discrete;
   translate: 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  [popover] {
+    padding: 3rem;
+  }
 }
