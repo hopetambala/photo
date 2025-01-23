@@ -71,12 +71,12 @@ export default async function PhotoEntry(props: Params) {
             key={`${slug?.current}`}
             src={mainImage?.image}
             alt={title}
-            height={1000}
+            height={"80vh"}
             objectFit="cover"
           />
         </div>
         <div style={{ width: "80vw", margin: "0 auto" }}>
-          <OCMasonryGallery columns={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 4 }}>
+          <OCMasonryGallery columns={{ xs: 2, sm: 2, md: 2, lg: 3, xl: 4 }}>
             {gallery?.images.map((photo, idx) => {
               const { image } = photo;
               const key = `${slug?.current}-${idx}`;
