@@ -9,7 +9,7 @@ import {
 
 import styles from "./page.module.css";
 
-const masonryHeights = [300, 500, 500, 600];
+const masonryHeights = [200, 400, 400, 500];
 
 type Params = {
   params: Promise<{
