@@ -4,8 +4,8 @@
 
 .responsive__image__container__text {
   text-align: center;
-  color: #e5e5e5;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  color: var(--hex-yellow);
+  text-shadow: 2px 2px 4px var(--hex-blue-900);
   text-transform: uppercase;
   font-weight: 900;
   font-size: 48px;
