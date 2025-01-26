@@ -7,6 +7,7 @@
 }
 
 .page a {
+  position: relative;
   text-align: center;
   color: var(--oc-sem-text);
   font-size: calc(2vw);
@@ -33,4 +34,19 @@
 
 .page__header__container__element:last-child > div {
   margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .page__header__container {
+    position: fixed;
+    width: 100%;
+    padding: var(--spacer-m) var(--spacer-l);
+    z-index: 100;
+
+    background-color: var(--background);
+  }
+
+  .page a {
+    font-size: calc(3vw);
+  }
 }

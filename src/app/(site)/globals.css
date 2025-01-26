@@ -79,6 +79,6 @@ button {
 
 @media screen and (max-width: 768px) {
   [popover] {
-    padding:0%;
+    padding: 0%;
   }
 }
