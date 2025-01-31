@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 // import { generateRandomFallbackImage } from "@/utils/testing-helpers";
 import {
   OCMasonryGallery,
+  OCMasonryImageGallery,
   OCResponsiveImage,
 } from "@/app/overcooked-design-system/components";
 
@@ -76,7 +77,7 @@ export default async function PhotoEntry(props: Params) {
           />
         </div>
         <div style={{ width: "80vw", margin: "0 auto" }}>
-          <OCMasonryGallery columns={{ xs: 2, sm: 2, md: 2, lg: 3, xl: 4 }}>
+          {/* <OCMasonryGallery columns={{ xs: 2, sm: 2, md: 2, lg: 3, xl: 4 }}>
             {gallery?.images.map((photo, idx) => {
               const { image } = photo;
               const key = `${slug?.current}-${idx}`;
@@ -103,7 +104,15 @@ export default async function PhotoEntry(props: Params) {
                 </button>
               );
             })}
-          </OCMasonryGallery>
+          </OCMasonryGallery> */}
+          <OCMasonryImageGallery
+            columns={{ xs: 2, sm: 2, md: 2, lg: 3, xl: 4 }}
+            images={gallery?.images.map((image) => ({
+              image: image.image,
+              title: title,
+            }))}
+            masonryHeights={masonryHeights}
+          />
         </div>
       </article>
       <aside></aside>
