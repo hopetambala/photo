@@ -1,18 +1,24 @@
 "use client";
-// import Masonry, { MasonryProps } from "@mui/lab/Masonry";
+import { Ref } from "react";
 import styles from "./OCDialog.module.css";
 
 interface OCDialogProps {
-  open: boolean;
+  isOpen: boolean;
   children: React.ReactNode;
-  dialogRef: React.RefObject<HTMLDialogElement | null> | null;
+  dialogRef?: Ref<HTMLDialogElement>;
 }
 
-const OCDialog = ({ children, dialogRef, ...props }: OCDialogProps) => {
+const OCDialog = ({ children, dialogRef, isOpen, ...props }: OCDialogProps) => {
+
   return (
-    <dialog ref={dialogRef} className={styles["oc-dialog"]} {...props}>
-      {children}
-    </dialog>
+    <>
+      {isOpen && (
+        <dialog open ref={dialogRef} className={styles["oc-dialog"]} {...props}>
+          {children}
+          <button>Close</button>
+        </dialog>
+      )}
+    </>
   );
 };
 
