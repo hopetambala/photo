@@ -1,5 +1,7 @@
 .oc-dialog {
-  position: relative;
+  margin: 0 auto;
+  max-height: 100vh; /* Prevent dialog from exceeding viewport height */
+  overflow: hidden;
 }
 
 .oc-dialog::backdrop {

@@ -1,8 +1,4 @@
-.oc__image__gallery__container {
-  /* display: flex;
-  flex-direction: row; */
-}
-
-.oc__image__gallery__container > * {
-  /* flex: 1; */
+.oc__image__gallery__dialog {
+  height: 100%;
+  width: 100%;
 }

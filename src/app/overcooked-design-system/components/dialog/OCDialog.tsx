@@ -3,22 +3,23 @@ import { Ref } from "react";
 import styles from "./OCDialog.module.css";
 
 interface OCDialogProps {
-  isOpen: boolean;
   children: React.ReactNode;
-  dialogRef?: Ref<HTMLDialogElement>;
+  dialogRef: Ref<HTMLDialogElement>;
+  classnames?: string;
 }
 
-const OCDialog = ({ children, dialogRef, isOpen, ...props }: OCDialogProps) => {
+const OCDialog = ({
+  children,
+  dialogRef,
+  classnames,
+  ...props
+}: OCDialogProps) => {
+  const classNames = [styles["oc-dialog"], classnames].join(" ");
 
   return (
-    <>
-      {isOpen && (
-        <dialog open ref={dialogRef} className={styles["oc-dialog"]} {...props}>
-          {children}
-          <button>Close</button>
-        </dialog>
-      )}
-    </>
+    <dialog ref={dialogRef} className={classNames} {...props}>
+      {children}
+    </dialog>
   );
 };
 
