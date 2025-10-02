@@ -2,7 +2,7 @@
 import Masonry, { MasonryProps } from "@mui/lab/Masonry";
 import { useEffect, useState } from "react";
 
-interface OCMasonryGalleryProps {
+export interface OCMasonryGalleryProps {
   columns?: MasonryProps["columns"];
   defaultHeight?: MasonryProps["defaultHeight"];
   defaultColumns?: MasonryProps["defaultColumns"];

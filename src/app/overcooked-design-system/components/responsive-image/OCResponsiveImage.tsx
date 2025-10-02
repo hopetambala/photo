@@ -11,6 +11,7 @@ interface OCResponsiveImageProps {
   text?: string;
   popoverTarget?: HTMLAttributes<HTMLDivElement>["popoverTarget"];
   customImageContainerClassNames?: string;
+  onClick?: () => void;
 }
 const OCResponsiveImage = ({
   src,
