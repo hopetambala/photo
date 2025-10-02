@@ -5,17 +5,34 @@
 
 .oc__image__gallery__dialog__closebutton {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  height: 100px;
-  width: 100px;
+  top: 12px;
+  right: 12px;
+  height: 44px;
+  width: 44px;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.253);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  transition: background-color 0.3s ease;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.oc__image__gallery__dialog__closebutton:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.oc__image__gallery__dialog__closebutton:active {
+  transform: scale(0.96);
+}
+
+.oc__image__gallery__dialog__closebutton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
 }

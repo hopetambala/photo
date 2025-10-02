@@ -51,7 +51,15 @@ const OCMasonryImageGallery = ({
         dialogRef={dialogRef}
         classnames={styles.oc__image__gallery__dialog}
       >
-        <button className={styles.oc__image__gallery__dialog__closebutton} onClick={closeDialog}>Close</button>
+        <button
+          type="button"
+          aria-label="Close"
+          title="Close"
+          className={styles.oc__image__gallery__dialog__closebutton}
+          onClick={closeDialog}
+        >
+          ×
+        </button>
 
         {/* {idx > 0 && <div data-action="prev">← Prev</div>} */}
         {image && (
