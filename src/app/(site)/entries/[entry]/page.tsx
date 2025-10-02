@@ -3,7 +3,6 @@ import { getPhotoEntry } from "@/sanity/queries/entries";
 import type { Metadata } from "next";
 // import { generateRandomFallbackImage } from "@/utils/testing-helpers";
 import {
-  OCMasonryGallery,
   OCMasonryImageGallery,
   OCResponsiveImage,
 } from "@/app/overcooked-design-system/components";

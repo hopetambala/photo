@@ -6,7 +6,6 @@ import OCMasonryGallery, {
 } from "../masonry/OCMasonryGallery";
 import styles from "./OCMasonryImageGallery.module.css";
 import OCDialog from "../dialog/OCDialog";
-import { set } from "sanity";
 
 interface imageProps {
   image: string;
@@ -20,8 +19,6 @@ interface OCMasonryImageGalleryProps
 }
 
 const OCMasonryImageGallery = ({
-  columns = 2,
-  defaultHeight = 800,
   ...props
 }: OCMasonryImageGalleryProps) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -33,7 +30,12 @@ const OCMasonryImageGallery = ({
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const openDialog = () => dialogRef.current?.showModal();
+  const openDialog = () => {
+    if (dialogRef.current) {
+      dialogRef.current.showModal();
+      
+    }
+  };
   const closeDialog = () => dialogRef.current?.close();
 
   useEffect(() => {
@@ -49,11 +51,13 @@ const OCMasonryImageGallery = ({
         dialogRef={dialogRef}
         classnames={styles.oc__image__gallery__dialog}
       >
-        <button onClick={closeDialog}>Close</button>
+        <button className={styles.oc__image__gallery__dialog__closebutton} onClick={closeDialog}>Close</button>
 
         {/* {idx > 0 && <div data-action="prev">← Prev</div>} */}
         {image && (
+          <div style={{ width: "80vw", height: "100%", margin: "0 auto" }}>
             <OCResponsiveImage src={image} alt={title} objectFit="contain" />
+          </div>
         )}
         {/* {idx < images.length - 1 && (
                   <div data-action="next">Next →</div>
