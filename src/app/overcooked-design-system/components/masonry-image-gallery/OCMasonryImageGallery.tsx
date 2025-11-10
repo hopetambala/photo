@@ -23,20 +23,34 @@ const OCMasonryImageGallery = ({
 }: OCMasonryImageGalleryProps) => {
   const [isMounted, setIsMounted] = useState(false);
 
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const { images, masonryHeights } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const openDialog = () => {
+  const openDialog = (index: number) => {
+    setCurrentIndex(index);
     if (dialogRef.current) {
       dialogRef.current.showModal();
       
     }
   };
   const closeDialog = () => dialogRef.current?.close();
+
+  const goToPrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (currentIndex < images.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const currentImage = images[currentIndex];
 
   useEffect(() => {
     setIsMounted(true);
@@ -61,15 +75,41 @@ const OCMasonryImageGallery = ({
           ×
         </button>
 
-        {/* {idx > 0 && <div data-action="prev">← Prev</div>} */}
-        {image && (
+        {currentIndex > 0 && (
+          <button
+            type="button"
+            aria-label="Previous image"
+            title="Previous"
+            className={styles.oc__image__gallery__dialog__navbutton}
+            onClick={goToPrevious}
+            style={{ left: "12px" }}
+          >
+            ⬅️
+          </button>
+        )}
+
+        {currentImage && (
           <div style={{ width: "80vw", height: "100%", margin: "0 auto" }}>
-            <OCResponsiveImage src={image} alt={title} objectFit="contain" />
+            <OCResponsiveImage
+              src={currentImage.image}
+              alt={currentImage.title}
+              objectFit="contain"
+            />
           </div>
         )}
-        {/* {idx < images.length - 1 && (
-                  <div data-action="next">Next →</div>
-                )} */}
+
+        {currentIndex < images.length - 1 && (
+          <button
+            type="button"
+            aria-label="Next image"
+            title="Next"
+            className={styles.oc__image__gallery__dialog__navbutton}
+            onClick={goToNext}
+            style={{ right: "12px" }}
+          >
+            ➡️
+          </button>
+        )}
       </OCDialog>
       <OCMasonryGallery columns={{ xs: 2, sm: 2, md: 2, lg: 3, xl: 4 }}>
         {images.map((photo, idx) => {
@@ -86,9 +126,7 @@ const OCMasonryImageGallery = ({
                 ]
               }
               onClick={() => {
-                openDialog();
-                setImage(image);
-                setTitle(title);
+                openDialog(idx);
               }}
             />
           );
